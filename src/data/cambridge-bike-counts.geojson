@@ -1,0 +1,379 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1458,
+     42.3753
+    ]
+   },
+   "properties": {
+    "location": "Aberdeen Ave & Mt Auburn St",
+    "total_cyclists": 377,
+    "count_days": 1,
+    "avg_per_count_day": 377,
+    "latest_year": 2018
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1434,
+     42.3884
+    ]
+   },
+   "properties": {
+    "location": "Alewife Brook Pkwy & Concord Ave",
+    "total_cyclists": 952,
+    "count_days": 1,
+    "avg_per_count_day": 952,
+    "latest_year": 2018
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1225,
+     42.3698
+    ]
+   },
+   "properties": {
+    "location": "Anderson Bridge & JFK St & Memorial Dr",
+    "total_cyclists": 6581,
+    "count_days": 4,
+    "avg_per_count_day": 1645,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1156,
+     42.3722
+    ]
+   },
+   "properties": {
+    "location": "Bow St & Massachusetts Ave",
+    "total_cyclists": 4171,
+    "count_days": 4,
+    "avg_per_count_day": 1043,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1246,
+     42.376
+    ]
+   },
+   "properties": {
+    "location": "Brattle St & Mason St",
+    "total_cyclists": 2791,
+    "count_days": 4,
+    "avg_per_count_day": 698,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1302,
+     42.3778
+    ]
+   },
+   "properties": {
+    "location": "Brattle St & Sparks St",
+    "total_cyclists": 3092,
+    "count_days": 4,
+    "avg_per_count_day": 773,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.0909,
+     42.3654
+    ]
+   },
+   "properties": {
+    "location": "Broadway & Hampshire St",
+    "total_cyclists": 10058,
+    "count_days": 4,
+    "avg_per_count_day": 2514,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.0843,
+     42.3627
+    ]
+   },
+   "properties": {
+    "location": "Broadway & Third St",
+    "total_cyclists": 1451,
+    "count_days": 1,
+    "avg_per_count_day": 1451,
+    "latest_year": 2018
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1103,
+     42.3551
+    ]
+   },
+   "properties": {
+    "location": "Brookline St & Granite St",
+    "total_cyclists": 3200,
+    "count_days": 4,
+    "avg_per_count_day": 800,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1008,
+     42.3737
+    ]
+   },
+   "properties": {
+    "location": "Cambridge St & Hampshire St",
+    "total_cyclists": 12487,
+    "count_days": 4,
+    "avg_per_count_day": 3122,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.0756,
+     42.3704
+    ]
+   },
+   "properties": {
+    "location": "Cambridge St & Monsignor OBrien Hwy",
+    "total_cyclists": 697,
+    "count_days": 1,
+    "avg_per_count_day": 697,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1309,
+     42.398
+    ]
+   },
+   "properties": {
+    "location": "Cedar St & Massachusetts Ave",
+    "total_cyclists": 6427,
+    "count_days": 4,
+    "avg_per_count_day": 1607,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1381,
+     42.3812
+    ]
+   },
+   "properties": {
+    "location": "Chilton St & Huron Ave",
+    "total_cyclists": 876,
+    "count_days": 4,
+    "avg_per_count_day": 219,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.141,
+     42.3867
+    ]
+   },
+   "properties": {
+    "location": "Concord Ave & Fresh Pond Pkwy & New St",
+    "total_cyclists": 2395,
+    "count_days": 4,
+    "avg_per_count_day": 599,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1237,
+     42.3783
+    ]
+   },
+   "properties": {
+    "location": "Concord Ave & Garden St",
+    "total_cyclists": 3888,
+    "count_days": 4,
+    "avg_per_count_day": 972,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.0899,
+     42.3627
+    ]
+   },
+   "properties": {
+    "location": "Galilei Way & Main St & Vassar St",
+    "total_cyclists": 3219,
+    "count_days": 2,
+    "avg_per_count_day": 1610,
+    "latest_year": 2022
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.0926,
+     42.3574
+    ]
+   },
+   "properties": {
+    "location": "Massachusetts Ave & Memorial Dr",
+    "total_cyclists": 14659,
+    "count_days": 4,
+    "avg_per_count_day": 3665,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.0996,
+     42.363
+    ]
+   },
+   "properties": {
+    "location": "Massachusetts Ave & Sidney St",
+    "total_cyclists": 10426,
+    "count_days": 4,
+    "avg_per_count_day": 2606,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1197,
+     42.389
+    ]
+   },
+   "properties": {
+    "location": "Massachusetts Ave & Somerville Ave",
+    "total_cyclists": 7777,
+    "count_days": 4,
+    "avg_per_count_day": 1944,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.0949,
+     42.3602
+    ]
+   },
+   "properties": {
+    "location": "Massachusetts Ave & Vassar St",
+    "total_cyclists": 13622,
+    "count_days": 4,
+    "avg_per_count_day": 3406,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1161,
+     42.3643
+    ]
+   },
+   "properties": {
+    "location": "Memorial Dr & Western Ave & Western Avenue Bridge",
+    "total_cyclists": 4253,
+    "count_days": 4,
+    "avg_per_count_day": 1063,
+    "latest_year": 2024
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.1135,
+     42.3623
+    ]
+   },
+   "properties": {
+    "location": "Putnam Ave & River St",
+    "total_cyclists": 1767,
+    "count_days": 4,
+    "avg_per_count_day": 442,
+    "latest_year": 2024
+   }
+  }
+ ]
+}
