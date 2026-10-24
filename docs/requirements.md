@@ -296,6 +296,144 @@ The scaffold includes a wheelchair mode.
 - **V1:** **no**, pending a team decision (see open questions). Much of F2 (max
   incline, avoid rough surfaces, curb ramps) supports it later.
 
+### F15. Wearable companion: hands-free turn prompts [Transcript]
+
+While riding or running, the app connects to a wearable such as earbuds (for
+example AirPods) and gives short spoken turn prompts, so the user does not look
+at the phone.
+
+- **Needs:** audio output through the phone's normal Bluetooth connection (no
+  special wearable integration is needed for spoken prompts, because the phone
+  plays the audio to the earbuds). Live location from the phone (GPS), a
+  turn-by-turn engine (the route geometry plus a "next maneuver" calculation),
+  and text-to-speech. A native app or a web app with the browser speech and
+  geolocation APIs **[Proposal]**. Smartwatch haptics (buzz left or right) and
+  earbud head-tracking are later ideas and need native apps for each platform.
+- **User sees:** a "Start ride" button, then short prompts ("Left on Centre St in
+  100 metres"), plus a minimal screen with the next turn. Volume and voice are
+  the phone's.
+- **Limits to know [Proposal]:** a web page may stop updating its location when
+  the screen locks or the browser goes to the background, which breaks
+  turn-by-turn; this must be tested on a real phone. A native app (or a
+  progressive web app with a wake lock) may be needed.
+- **V1:** **no** for live navigation. V1 shows the routes on a map. **Later:**
+  spoken prompts first, then haptics.
+
+### F16. Hurry mode and the green-light route [Transcript]
+
+When the user is in a hurry, the app maximises speed. The team's bigger idea is
+a "green-light route": connect to traffic signals so the route and pacing try to
+hit the greens.
+
+Two levels, from simple to hard:
+
+1. **Hurry mode (no signal data) [Proposal]:** the Fastest goal plus a penalty on
+   segments with many signalised intersections or known long waits, using
+   signal locations from map data. This estimates delay with an average wait per
+   signal (proposed 20 seconds for biking, 30 for walking, to be tuned).
+2. **Green-light route (needs signal timing):** with each signal's timing plan,
+   the app picks the route and the speed that arrives at each signal during the
+   green phase, and can suggest a target speed ("ride 16 km/h to catch the next
+   greens", the idea behind "green wave" systems).
+
+- **Needs:** at level 1, OpenStreetMap `highway=traffic_signals` nodes. At
+  level 2: signal timing data (cycle length, green split, offsets, and ideally
+  live phase), plus an accurate live position and speed from F15.
+- **User sees:** a "Hurry" toggle on the route card showing estimated signal
+  stops ("about 6 signals, ~2 min of waiting"). At level 2, a "catch the
+  greens" suggestion with a target speed.
+- **Open question, flagged clearly:** signal timing data is often not public. In
+  the US many cities run signals on fixed or actuated plans that are not
+  published as a live feed, and live phase data may only be available through
+  city traffic departments or vendor partners. **We have not verified whether
+  Boston publishes signal timing or live phase data.** Before this feature is
+  promised in a pitch, someone must check with the city's transportation
+  department (and any data partner) and confirm what is available, its format,
+  and its terms. Do not present level 2 as a working feature until then.
+- **V1:** level 1 estimated delay **maybe** (stretch goal, uses map data only).
+  Level 2 green-light route **no, unconfirmed**; treat as a research question
+  and a possible partner conversation.
+
+### F17. Reroute when a red light is hit [Transcript]
+
+If the user reaches a red light, the app reroutes: it says to turn left or right
+and redirects onto a new path, so the user keeps moving.
+
+- **Needs:** F15 (live position and prompts), F16 level 2 (to know the light is
+  red now, and the phase of the next signals), and a fast re-route from the
+  current position. Without live signal data the app cannot know a light is red;
+  it could only infer a stop from the phone's speed dropping to zero near a
+  signal **[Proposal]**.
+- **User sees:** a prompt such as "Red ahead. Turn right on Wyman St to keep
+  moving" and a new line on the map. After a reroute, the app should not
+  produce a longer route than the extra-distance setting allows (F5).
+- **Risk [Proposal]:** rerouting around a red light could encourage unsafe
+  riding if it leads onto worse roads. The new path must respect the safety
+  profile (F2 and F4), and prompts must never tell a user to run a red light.
+- **V1:** **no.** Later, after F15 and F16 level 2 exist.
+
+### F18. Quiet mode: speak only when it matters [Transcript]
+
+A mode that limits how often the app speaks and alerts, so it only interrupts on
+what matters. The team described it as a green-light mode with fewer follow-ups,
+so the app does not keep talking while things are going well.
+
+- **Rules [Proposal]:**
+  - Always speak: a turn or reroute, a safety warning (for example, a stretch with
+    no bike lane ahead), a hazard.
+  - Speak once: the start and the arrival.
+  - Stay silent: confirmations ("you're on track"), repeated reminders, and
+    anything the user can see on the screen.
+  - Prompt timing: a heads-up about a turn at roughly 150 m, a final cue at
+    about 30 m for biking; for running and walking, 80 m and 20 m. Distances
+    scale with speed.
+- **Needs:** F15, and a notion of alert priority (critical, useful, optional).
+- **User sees:** a setting "Prompts: Standard / Quiet / Turns only".
+- **V1:** **no** (depends on F15). The priority levels should still be designed
+  into the alert code from the start so it can be added.
+
+### F19. Planned stop along the way [Transcript]
+
+The user adds a stop (for example "grab matcha on my bike ride") and says what
+they want. The app suggests places on or near the route.
+
+- **Needs:** a places dataset with categories and opening hours (OpenStreetMap
+  `amenity=cafe`, `shop=*` with `cuisine` and `opening_hours`, or a places API;
+  an API usually needs a key and has terms and costs, which we have not
+  checked). A free-text request ("matcha") mapped to categories or keywords.
+  Routing with a waypoint: route start to stop to destination.
+- **User sees:** an "Add a stop" button. The user types or picks "matcha"; the
+  app shows 3 to 5 options as pins on the route, each with the extra distance
+  and time to reach it ("+0.2 km, +1 min"), whether it is open now, and a
+  bike-friendly note (bike parking, on a bike lane). Choosing one updates the
+  route.
+- **How to find "on the way" [Proposal]:** a place counts as on the way if
+  adding it as a waypoint increases the route by no more than a set limit (the
+  F5 extra-distance setting, default 10% or 400 m).
+- **Gap to decide:** "matcha" is a specific item; map data usually knows cafes,
+  not what they serve. Options: match on name and cuisine tags only, use
+  reviews (needs a paid or restricted API), or let the user confirm. We do not
+  know yet which is acceptable.
+- **V1:** **stretch goal.** A simple version: user taps a category (cafe, water,
+  bike shop, restroom) and picks from nearby pins on the route, using OSM data
+  only. Free-text and live opening hours are later.
+
+### F20. Detour for a better spot [Transcript]
+
+If the best place is not on the way and the user does not mind going out of
+their way, the app finds better options farther off the route.
+
+- **Needs:** F19, a quality signal for places (ratings or popularity, which
+  come from an external places service or user input; OSM does not have
+  ratings), and the extra-distance setting (F5).
+- **User sees:** in the stop picker, a toggle "I'll detour for something
+  better", with a slider for how far (for example up to +1.5 km). Results are
+  sorted by quality then detour cost, each showing the detour ("+1.1 km, +5
+  min") and why it is suggested.
+- **Rule [Proposal]:** the detour limit is separate from the route extra-distance
+  limit, and the app shows the total before the user confirms.
+- **V1:** **no.** Needs a ratings source. Later.
+
 ---
 
 ## 5. Scoring scales
@@ -411,6 +549,11 @@ use trail and park data for scenic options.
 | Parks and open space | OSM `leisure=park`, `landuse=forest`, City of Boston open space | Used for F9 and F12 |
 | Trails | OSM `highway=path/footway/track`, `sac_scale`, `mtb:scale` | Difficulty tags are rare; derive difficulty from surface and grade |
 | Trees and greenery | Boston street tree inventory | Stretch goal for the scenic score |
+| Signal locations | OSM `highway=traffic_signals` | For the estimated-delay version of hurry mode (F16); available now |
+| Signal timing and live phase | City traffic department or a data partner | **Unconfirmed.** Often not public; needed for the green-light route (F16) and red-light reroute (F17). See open question 14 |
+| Places for stops | OSM `amenity=cafe`, `shop=*`, `opening_hours`; or a places API | A places API needs a key, has terms and costs we have not checked (F19, F20) |
+| Ratings / popularity | External places service | OSM has none; needed for detour suggestions (F20) |
+| Live position | Phone GPS | Needed for F15, F17, F18 |
 | Traffic stress | OSM `maxspeed`, `lanes`, `highway` class | Basis for the traffic-stress factor |
 
 Data rules:
@@ -446,6 +589,9 @@ route and a safety score). Mapping:
 | Segments | `RouteSegment` has surface, protectedLane, gradePercent | Add `infrastructureType`, `trafficStress`, `crashRate`, `inPark` |
 | Score | `RouteScore` has one total and four breakdown items | Add `scenic` and `difficulty` |
 | Obstacles | stubbed with mock data | Leave as is (V1 out of scope) |
+| Stops | none | Later: add `stops: Place[]` to the trip request and `waypoints` to routing (F19, F20) |
+| Live navigation | none | Later: a navigation feature folder for position, prompts, and alert priority (F15, F17, F18) |
+| Signals | none | Later: `signalsOnRoute` and estimated delay on `Route` (F16) |
 
 Any change to `src/types` is a shared contract change and should go through the
 team, as the steering notes in `.kiro/steering` require.
@@ -468,10 +614,13 @@ In V1 (build in this order, so there is a working demo after each step):
 6. F8 difficulty label on routes through the parks.
 
 Stretch goals: F11 crash data, bike type, presets, surface breakdown bar,
-elevation chart polish.
+elevation chart polish, F16 estimated signal delay (map data only), and a
+simple F19 stop picker by category using map data only.
 
 Not in V1: driving (F1), trail filter and loops (F8), obstacle reports (F13),
-wheelchair (F14), areas outside the test zone, turn-by-turn voice navigation,
+wheelchair (F14), wearable prompts (F15), the green-light route using signal
+timing (F16 level 2), red-light reroute (F17), quiet mode (F18), free-text stops
+and detours for better spots (F19, F20), areas outside the test zone, turn-by-turn voice navigation,
 live GPS tracking, accounts, saved routes, real-time traffic.
 
 Other test areas the team mapped for later (for trying the idea beyond V1):
@@ -557,6 +706,22 @@ Data and technical:
     (assume the worst, or show as unknown)?
 13. Where does the profile live in V1: only on the device, or an account?
 
+Wearable, signals, and stops:
+
+14. **Signal timing data (blocks F16 and F17).** Does the City of Boston, or a
+    partner, publish signal timing or live signal phase data? Who do we ask
+    (the city's transportation department, the Mayor's Office innovation staff,
+    a hackathon data partner)? Until answered, the green-light route is an
+    unconfirmed idea, not a feature to promise.
+15. Is live turn-by-turn in scope for the pitch, or is the pitch the planning
+    app plus a mock-up of the wearable experience?
+16. Native app or web app for live navigation? A web page may lose location
+    updates when the screen locks; this needs a test on a real phone.
+17. Which places source do we use for stops (OSM only, or a places API with a
+    key and terms), and how do we handle a specific item like "matcha"?
+18. Is rerouting after a red light acceptable from a safety point of view, and
+    what wording keeps it from encouraging unsafe riding?
+
 Marketing:
 
-14. Who runs the interviews, and what consent wording do we use?
+19. Who runs the interviews, and what consent wording do we use?
