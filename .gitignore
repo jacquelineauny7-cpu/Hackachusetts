@@ -218,3 +218,28 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---------------------------------------------------------------------------
+# Node / Vite / React (web app)
+# ---------------------------------------------------------------------------
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+
+# Environment files — NEVER commit real keys
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
