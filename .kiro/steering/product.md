@@ -41,3 +41,13 @@ usable one-handed.
 Scaffolding only. All data flows are stubbed with mock data so the team can
 build features in parallel. Real OpenRouteService routing and Supabase-backed
 obstacle reports come later.
+
+## Feature spec
+
+The full feature spec for Route Your Way (profiles, route goals, scoring
+scales, incline and difficulty bands, data sources, wearable and stop features,
+and V1 scope) lives in `docs/requirements.md`. Read it before building a feature.
+Where it differs from this file, the spec is newer and wins. Values marked
+`[Proposal]` in the spec are suggestions, not decisions.
+
+#[[file:docs/requirements.md]]
